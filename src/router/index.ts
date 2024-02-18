@@ -7,23 +7,51 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: DashboardView
+            component: DashboardView,
+            meta: {
+                title: 'Welcome'
+            }
         },
         {
-            path: '/:model',
+            path: '/:app/',
+            name: 'app_view',
+            // route level code-splitting
+            // this generates a separate chunk (About.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import('@/views/AppView.vue'),
+            meta: {
+                title: 'Model Objects'
+            }
+        },
+        {
+            path: '/:app/:model/',
             name: 'list_view',
             // route level code-splitting
-          // this generates a separate chunk (About.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import('@/views/ListView.vue')
+            // this generates a separate chunk (About.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import('@/views/ListView.vue'),
         },
         {
-          path: '/:model/:id',
-          name: 'form_view',
-          // route level code-splitting
-          // this generates a separate chunk (About.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import('@/views/FormView.vue')
+            path: '/:app/:model/add',
+            name: 'add_view',
+            // route level code-splitting
+            // this generates a separate chunk (About.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import('@/views/FormView.vue'),
+            meta: {
+                title: 'Add'
+            }
+        },
+        {
+            path: '/:app/:model/:id/change',
+            name: 'change_view',
+            // route level code-splitting
+            // this generates a separate chunk (About.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import('@/views/FormView.vue'),
+            meta: {
+                title: 'Edit'
+            }
         }
     ]
 })
