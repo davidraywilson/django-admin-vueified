@@ -1,11 +1,11 @@
-/** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 export default {
     darkMode: 'class',
     content: [
         './index.html',
-        './src/**/*.{vue,js,ts,jsx,tsx,scss,sass}'
+        './src/**/*.{vue,js,ts,jsx,tsx,scss,sass}',
+        'node_modules/primevue/**/*.{js,jsx,ts,tsx,vue}',
     ],
     theme: {
         extend: {
